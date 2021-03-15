@@ -13,6 +13,9 @@ const NinjaForm = () => {
         ninjaLang: "",
         ninjaFavColor: ""
     })
+
+    
+
     const [allNinjas, setAllNinjas ] = useState([])
 
     const changeHandler = (e)=>{
@@ -20,20 +23,35 @@ const NinjaForm = () => {
             ...formInfo,
             [e.target.name]: e.target.value
         })
+
+       
     }
 
     const submitHandler = (e)=>{
         e.preventDefault()
         // allNinjas.push(formInfo) CANT DO IT THIS WAY IN REACT
         setAllNinjas([...allNinjas, formInfo])
+        console.log(allNinjas)
         setFormInfo({
             ninjaName: "",
             ninjaImg: "",
             ninjaLang: "",
             ninjaFavColor: ""
         })
-       
         
+    }
+
+    const graduateStudent = (e, itemInfo, idxNum)=>{
+        console.log("you click on this student", itemInfo)
+        console.log("student is at index number", idxNum)
+        let result = allNinjas.filter((oneNinja, idx)=>{
+            console.log(oneNinja, idx)
+            return idx!= idxNum
+        })
+        console.log(result)
+        setAllNinjas(result)
+
+
     }
 
     return (
@@ -62,8 +80,10 @@ const NinjaForm = () => {
             </form>
         </div>
         <div className = {styles.container}>
-            {allNinjas.map(ninja =>{
-                return <div className= {styles.individualNinja} style = {{backgroundColor: ninja.ninjaFavColor }}>
+            {allNinjas.map((ninja, idx ) =>{
+                // return <button onClick={ (e) => onClickHandler(e, item) }>{ item }</button>
+
+                return <div onClick = {(e)=>graduateStudent(e, ninja,idx)} className= {styles.individualNinja} style = {{backgroundColor: ninja.ninjaFavColor }}>
                     <p>Ninja Name: {ninja.ninjaName}</p>
                     <p>Favorite Language: {ninja.ninjaLang}</p>
                     <p><img src={ninja.ninjaImg} alt="" height= "200px" width= "200px"/></p>
