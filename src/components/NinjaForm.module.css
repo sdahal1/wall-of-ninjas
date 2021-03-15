@@ -1,0 +1,24 @@
+.container{
+    display:flex;
+    margin: 20px;
+}
+
+.individualNinja {
+    width: 400px;
+    height: 400px;
+    background-color: gray;
+    border: 1px solid black;
+    animation: slide-in 1s
+}
+
+
+
+@keyframes slide-in {
+    from{
+        transform: translateX(1600px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
