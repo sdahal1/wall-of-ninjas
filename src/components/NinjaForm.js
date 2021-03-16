@@ -3,56 +3,45 @@ import React , {useState} from 'react';
 import styles from './NinjaForm.module.css';
 
 
-const NinjaForm = () => {
+const NinjaForm = (props) => {
    
+    const {submitHandler, changeHandler, formInfo} = props
 
-
-    const [formInfo, setFormInfo] = useState({
-        ninjaName: "",
-        ninjaImg: "",
-        ninjaLang: "",
-        ninjaFavColor: ""
-    })
+    // const [formInfo, setFormInfo] = useState({
+    //     ninjaName: "",
+    //     ninjaImg: "",
+    //     ninjaLang: "",
+    //     ninjaFavColor: ""
+    // })
 
     
 
-    const [allNinjas, setAllNinjas ] = useState([])
+    // const [allNinjas, setAllNinjas ] = useState([])
 
-    const changeHandler = (e)=>{
-        setFormInfo({
-            ...formInfo,
-            [e.target.name]: e.target.value
-        })
+    // const changeHandler = (e)=>{
+    //     setFormInfo({
+    //         ...formInfo,
+    //         [e.target.name]: e.target.value
+    //     })
 
        
-    }
+    // }
 
-    const submitHandler = (e)=>{
-        e.preventDefault()
-        // allNinjas.push(formInfo) CANT DO IT THIS WAY IN REACT
-        setAllNinjas([...allNinjas, formInfo])
-        console.log(allNinjas)
-        setFormInfo({
-            ninjaName: "",
-            ninjaImg: "",
-            ninjaLang: "",
-            ninjaFavColor: ""
-        })
+    // const submitHandler = (e)=>{
+    //     e.preventDefault()
+    //     // allNinjas.push(formInfo) CANT DO IT THIS WAY IN REACT
+    //     setAllNinjas([...allNinjas, formInfo])
+    //     console.log(allNinjas)
+    //     setFormInfo({
+    //         ninjaName: "",
+    //         ninjaImg: "",
+    //         ninjaLang: "",
+    //         ninjaFavColor: ""
+    //     })
         
-    }
-
-    const graduateStudent = (e, itemInfo, idxNum)=>{
-        console.log("you click on this student", itemInfo)
-        console.log("student is at index number", idxNum)
-        let result = allNinjas.filter((oneNinja, idx)=>{
-            console.log(oneNinja, idx)
-            return idx!= idxNum
-        })
-        console.log(result)
-        setAllNinjas(result)
+    // }
 
 
-    }
 
     return (
         <>
@@ -79,7 +68,7 @@ const NinjaForm = () => {
 
             </form>
         </div>
-        <div className = {styles.container}>
+        {/* <div className = {styles.container}>
             {allNinjas.map((ninja, idx ) =>{
                 // return <button onClick={ (e) => onClickHandler(e, item) }>{ item }</button>
 
@@ -89,7 +78,7 @@ const NinjaForm = () => {
                     <p><img src={ninja.ninjaImg} alt="" height= "200px" width= "200px"/></p>
                 </div>
             })}
-        </div>
+        </div> */}
         </>
     );
 };
